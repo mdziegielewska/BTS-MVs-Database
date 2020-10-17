@@ -3,16 +3,16 @@ use bts_database;
 
 create table users
 (
-	Ids int not null primary key auto_increment,
+    Ids int not null primary key auto_increment,
     Usernames varchar(10) not null,
     Passwords varchar(30) not null,
-	Display_names varchar(20) not null,
+    Display_names varchar(20) not null,
     Avatar blob
 );
 
 create table bts_members 
 (
-	Stage_name varchar(10) not null,
+    Stage_name varchar(10) not null,
     Stage_name_in_Hangul varchar(30) not null,
     Korean_name varchar(50) not null,
     Korean_name_in_Hangul varchar(50) not null,
@@ -32,7 +32,7 @@ select * from bts_members;
 
 create table bts_mvs
 (
-	Song_name varchar(60) not null,
+    Song_name varchar(60) not null,
     Original_name varchar(60),
     Released_date date not null,
     Length time not null,
