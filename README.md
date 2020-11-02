@@ -1,3 +1,3 @@
-# Projekt_BazaDanych
+# Projekt_PBZ_TTSI
 
-To repozytorium powstało na potrzeby projektu z przedmiotu PBZ.
+To repozytorium powstało na potrzeby projektu z przedmiotów PBZ oraz TTSI.
