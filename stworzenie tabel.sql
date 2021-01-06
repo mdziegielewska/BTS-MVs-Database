@@ -43,6 +43,10 @@ create table bts_mvs
     Lyricists varchar(300)
 );
 
+insert into bts_mvs values("Life Goes On: like an arrow", "삶은계속됩니다:쏜살같이", '2020-11-29', '3:36', "Korean", "https://www.youtube.com/watch?v=2N-Fsa9Evo0", "Jungkook", "RM, Suga, JHope", "RM, Suga, JHope");
+insert into bts_mvs values("Life Goes On: in the forrest", "삶은계속됩니다:숲속에", '2020-11-25', '3:36', "Korean", "https://www.youtube.com/watch?v=RvcP6V4h_q4", "Jungkook", "RM, Suga, JHope", "RM, Suga, JHope");
+insert into bts_mvs values("Life Goes On: on my pillow", "삶은계속됩니다:내베개져", '2020-11-21', '3:36', "Korean", "https://www.youtube.com/watch?v=yIvb4csSgcs", "Jungkook", "RM, Suga, JHope", "RM, Suga, JHope");
+insert into bts_mvs values("Life Goes On", "삶은계속됩니다", '2020-11-20', '3:51', "Korean", "https://www.youtube.com/watch?v=-5q5mZbe3V8", "Jungkook", "RM, Suga, JHope", "RM, Suga, JHope");
 insert into bts_mvs values("Dynamite (70s' Remix)", "다이너마이트", '2020-09-20', '3:22', "English", "https://www.youtube.com/watch?v=WRoZgfjzGNQ", "Lumpens", "-", "-");
 insert into bts_mvs values("Dynamite (BSide Ver)", "다이너마이트", '2020-08-24', '3:47', "English", "https://www.youtube.com/watch?v=BV2FdDmGiW0", "Lumpens", "-", "-");
 insert into bts_mvs values("Dynamite", "다이너마이트", '2020-08-21', '3:44', "English", "https://www.youtube.com/watch?v=gdZLi9oWNZg", "Lumpens", "-", "-");
