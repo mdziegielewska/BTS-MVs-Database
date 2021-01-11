@@ -9,7 +9,7 @@ create table users
     Display_names varchar(20) not null,
     Avatar varchar(100) not null
 );
-ALTER TABLE users CHANGE Avatar Avatar varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'default.png';
+alter table users change Avatar Avatar varchar(100) character set utf8mb4 collate utf8mb4_general_ci not null default 'default.png';
 
 create table bts_members 
 (
