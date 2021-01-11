@@ -1,0 +1,109 @@
+body {
+	background-color: #f2c9fb;
+	height: 650px;
+	width: 1350px;
+	overflow: scroll;
+}
+
+.header {
+	color: #918e91;
+	position: absolute;
+	background-color: #fefce0;
+	font-family: lucida sans;
+	text-align: center;
+	margin-top: 15px;
+	width: 400px;
+	left: 484px;
+	top: absolute;
+	height: 100px;
+	border-radius: 5px;
+	border-color: #fff1d7;
+	border-style: outset;
+}
+
+.h1 {
+	margin-top: 24px;
+	font-size: 26px;
+}
+
+.h2 {
+	margin-top: -10px;
+	font-size: 13px;
+}
+
+.bts_logo {
+	float: left;
+	display: block;
+	margin-left: 10px;
+	margin-top: -29px;
+}
+
+.army_logo {
+	float: right;
+	display: block;
+	margin-right: 10px;
+	margin-top: -29px;
+}
+
+nav {
+	color: #918e91;
+	position: absolute;
+	background-color: #fefce0;
+	font-family: lucida sans;
+	text-align: center;
+	margin-top: 140px;
+	width: 820px;
+	height: 40px;
+	left: 287px;
+	border-radius: 5px;
+	border-color: #fff1d7;
+	border-style: outset;
+}
+
+nav ul {
+	list-style: none;
+	margin-top: 10px;
+	margin-left: -30px;
+}
+
+nav ul li {
+	display: inline-block;
+}
+nav ul li a {
+	display: block;
+	text-decoration: none;
+	font-family: lucida sans;
+	font-size: 16px;
+	color: #918e91;
+    margin: 0 30px;
+}
+
+nav.menu ul li a {
+	position: relative;
+	z-index: 1;
+}
+
+nav.menu ul li a:after {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	width: 100%;
+	height: 1px;
+	color: transparent;
+	content: '.';
+	background: #fff1d7;
+	visibility: none;
+	opacity: 0;
+	z-index: -1;
+}
+
+nav.menu ul li a:hover:after {
+	opacity: 1;
+	visibility: visible;
+	height: 110%;
+	width: 100%;
+}

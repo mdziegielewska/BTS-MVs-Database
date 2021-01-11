@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Sign up</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/signup-main.css">
+</head>
+
+<body onload="page_init()">
+	<div class = "header">
+	<h1 class = "h1"> <img src="photos/bts2.png" class="bts_logo" alt="bts_logo" usemap="#map1">Bangtan Boys
+	<img src="photos/army2.png" class="army_logo" alt="army_logo" usemap="#map2"> </h1> 
+	<h2 class = "h2"> 13.06.13 </h2> 
+	<map name="map1">
+		<area shape="rect" coords="11,17,57,91" alt="bts_logo" href="index.php">
+	</map>
+	<map name="map2">
+		<area shape="rect" coords="11,17,57,91" alt="army_logo" href="https://www.youtube.com/watch?v=2N-Fsa9Evo0">
+	</map>
+	</div>
+	
+	<nav class="menu">
+		<ul>
+			<li><a href="rm.php">   RM   </a></li>
+			<li><a href="jin.php">  Jin   </a></li>
+			<li><a href="suga.php">  Suga  </a></li>
+			<li><a href="jhope.php"> J-Hope </a></li>
+            <li><a href="jimin.php"> Jimin  </a></li>
+			<li><a href="v.php">   V    </a></li>
+            <li><a href="jungkook.php">Jungkook</a></li>
+		</ul>
+	</nav>
+	
+	<div class="content">
+		<div class="left">
+			<img src="photos/bw4.png" class="col">
+		</div>
+		<div class="middle">
+			<h3 class="h3"> Sign up </h3>
+			<form action="log_reg.php" method="post">
+				<div class="container">
+				<p> Username: <input class="u" type="text" name="username" minlength="4" maxlength="15" placeholder="Enter Username" required></p>
+				<p> Password: <input class="p" type="password" name="password" minlength="6" maxlength="30" placeholder="Enter Password" required></p>
+				<p> Repeat password: <input class="p2" type="password" name="password2" minlength="6" maxlength="30" placeholder="Enter Password" required></p>
+				<p> <input class="reg" type = "submit" value = "Submit" name="register_user"/></p>
+				<div class="logi">
+				<p> Do you have an account? <a href="login.html" class="log" title="login"> Log in </a></p>
+				</div>
+				</div>
+			</form>
+		</div>
+		<div class="right">
+			<img src="photos/bw3.png" class="bw">
+		</div>
+	</div>
+	
+</body>
+</html>
