@@ -3,12 +3,13 @@ use bts_database;
 
 create table users
 (
-    Ids int not null primary key auto_increment,
-    Usernames varchar(10) not null,
-    Passwords varchar(30) not null,
+    Ids int(100) not null primary key auto_increment,
+    Usernames varchar(15) not null,
+    Passwords varchar(100) not null,
     Display_names varchar(20) not null,
-    Avatar blob
+    Avatar varchar(100) not null
 );
+ALTER TABLE users CHANGE Avatar Avatar varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'default.png';
 
 create table bts_members 
 (
