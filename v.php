@@ -67,7 +67,7 @@
 	border-radius: 20px;
 	height: 40px;
 	width: 40px;
-	margin-left: 200px;
+	margin-left: 230px;
 	margin-top: -20px;
 }
 
@@ -164,10 +164,192 @@ td {
 			<tr><th scope='row'> Hometown</th><td>" . $row["Hometown"] . "</td></tr>
 			<tr><th scope='row'> Position</th><td>" . $row["Position"] . "</td></tr></table>";
 	}
-	
-	close_connection($conn);
 ?>
 	</div>
+	</div>
+	
+<style>
+.comments {
+	position: absolute;
+	display: block;
+	margin-top: 680px;
+	margin-left: 630px;
+	color: #958d94;
+	font-family: lucida sans;
+	text-align: left;
+}
+
+.h3 {
+	font-size: 19px;
+}
+
+.com {
+	border-radius: 45px;
+	height: 90px;
+	width: 90px;
+	display: block;
+	margin-left: 500px;
+	margin-top: -100px;
+	object-fit: cover;
+}
+
+.c {
+	display: block;
+	font-size: 14px;
+	caret-color: #ce53ed;
+	border-color: #fff1d7;
+	border-style: outset;
+	border-radius: 15px;
+	border-style: solid;
+	margin-left: 630px;
+	margin-top: -115px;
+	background-color: #fefce0;
+	height: 100px;
+	width: 450px;
+}
+
+.sub {
+	text-align: center;
+	display: block;
+	font-family: lucida sans;
+	font-size: 13.5px;
+	border-radius: 5px;
+	border-color: #918e91;
+	color: #fefce0;
+	background-color: #918e91;
+	margin-left: 1000px;
+}
+
+.av {
+	border-radius: 45px;
+	height: 90px;
+	width: 90px;
+	margin-left: 500px;
+	margin-top: 15px;
+	object-fit: cover;
+}
+
+.dn {
+	color: #958d94;
+	margin-top: -120px;
+	margin-left: 630px;
+	font-family: lucida sans;
+	text-align: left;
+	font-size: 14.5px;
+}
+
+.cm {
+	height: 90px;
+	width: 440px;
+	background-color: #fefce0;
+	border-color: #fff1d7;
+	border-style: outset;
+	border-radius: 15px;
+	border-style: solid;
+	display: block;
+	margin-left: 630px;
+	margin-top: 0px;
+	color: #958d94;
+	text-align: left;
+	padding: 10px 0 0 10px;
+}
+
+.d {
+	color: #958d94;
+	font-family: lucida sans;
+	text-align: right;
+	font-size: 14px;
+}
+
+.other {
+	display: block;
+	position: absolute;
+	margin-top: 900px;
+}
+
+.ur_comment {
+	display: block;
+	position: absolute;
+	margin-top: 850px;
+}
+
+.del {
+	text-align: center;
+	display: block;
+	font-family: lucida sans;
+	font-size: 13.5px;
+	border-radius: 5px;
+	border-color: #918e91;
+	color: #fefce0;
+	background-color: #918e91;
+	margin-left: 1000px;
+}
+</style>
+	<div class="comments">
+		<h3 class="h3">Comments:</h3>
+	</div>
+	<div class="ur_comment">
+<?php
+	if (isset($_COOKIE["username"])) {
+		$username = htmlspecialchars($_COOKIE["username"]);
+		$sql = "SELECT Avatar FROM users WHERE Usernames='$username'";	
+		$result = mysqli_query($conn, $sql);
+		
+		if ($result !== " ") {
+			while($row = $result->fetch_assoc()) {
+				$avatar = $row["Avatar"];
+				$folder = "photos/avatars/";
+				$image = $folder.$avatar;
+				echo "<img class='com' src='$image'>";
+			}
+		}
+		
+		echo "<form action='add_comment.php?member=v' method='post'>
+			<p><input class='c' name='comment' type='text' placeholder='Add a comment...' maxlength=240></p>
+			<p><input class='sub' type ='submit' value='Submit' name='add'></p>
+			</form>";
+	}	else {
+		echo "<form action='add_comment.php?member=v' method='post'>
+			<p><input class='c' name='comment' type='text' placeholder='You need to log in to comment' maxlength=240 disabled></p>
+			</form>";
+	}
+	
+?>
+	</div>
+	<div class="other">
+<?php
+	$sql2 = "SELECT Username, Comment, Date FROM comments WHERE Member='v' ORDER BY comments.Date DESC";
+	$result2 = $conn->query($sql2);
+	
+	if ($result2->num_rows > 0) {
+		while($row2 = $result2-> fetch_assoc()) {
+			$username = $row2['Username'];
+			$sql3 = "SELECT Display_names, Avatar FROM users WHERE Usernames = '$username'";
+			$result3 = mysqli_query($conn, $sql3);
+			while($row3 = mysqli_fetch_array($result3)) {
+				$avatar = $row3["Avatar"];
+				$folder = "photos/avatars/";
+				$image = $folder.$avatar;
+				$display_name = $row3["Display_names"];
+				$com = $row2["Comment"];
+				$date = $row2["Date"];
+				
+				echo "<img class='av' src='$image'>";
+				echo "<p class='dn'>$display_name (@$username)</p>";
+				echo "<p class='cm'>$com</p>";
+				echo "<p class='d'>$date</p>";
+				
+				if ((isset($_COOKIE["username"])) && ($_COOKIE["username"] == $username)) {
+					$date = urlencode($date);
+					echo "<form action='delete_comment.php?member=jungkook&date=$date' method='post'>
+						<p><input type='submit' class='del' onclick=\"return confirm('Are you sure you want to delete?')\" value='Delete'/></p>
+						</form>";
+				}
+			}
+		}
+	}
+	close_connection($conn);
+?>
 	</div>
 	
 </body>

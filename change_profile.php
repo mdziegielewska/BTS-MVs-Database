@@ -135,7 +135,7 @@
 	border-radius: 20px;
 	height: 40px;
 	width: 40px;
-	margin-left: 200px;
+	margin-left: 230px;
 	margin-top: -20px;
 }
 

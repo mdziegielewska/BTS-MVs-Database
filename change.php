@@ -27,6 +27,8 @@
 		if (mysqli_query($conn, $sql2)) {
 			setcookie("username", $username, time() - 360,'/');
 			setcookie("username", $new_username, time()+3600*24,'/');
+			$sql2_1 = "UPDATE comments SET Username = '$new_username' WHERE Username = '$username'";
+			mysqli_query($conn, $sql2_1);
 		}
 	}
 	if (!empty($new_password) && !empty($new_password2)) {
