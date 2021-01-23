@@ -110,7 +110,7 @@ table {
 	border-collapse: collapse;
 	position: absolute;
 	display: block;
-	margin-top: 65px;
+	margin-top: -20px;
 	margin-left: -60px;
 	margin-bottom: 50px;
 }
@@ -166,10 +166,74 @@ td {
 	}
 	
 ?>
+		<h4 class="like">
+		<p class="r">
+		<?php
+			$xml = simplexml_load_file("reactions.xml");
+			echo "&nbsp  ";
+			echo $xml->member[3]->thumbs_up;
+			echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
+			echo $xml->member[3]->smiling_devil;
+			echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
+			echo $xml->member[3]->purple_heart;
+			echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
+			echo $xml->member[3]->microphone;
+			echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
+			echo $xml->member[3]->loco;
+			echo "&nbsp";
+		?>
+		</p>
+		
+		<img src="photos/emoji/thumbs_up.png" class="thumbs_up" alt="thumbs_up" usemap="#thumbs_up">
+		<map name="thumbs_up">
+			<area shape="rect" coords="0,0,56.1,60" alt="thumbs_up" href="like.php?member=jhope&reaction=thumbs_up">
+		</map>
+		
+		<img src="photos/emoji/smiling_devil.png" class="smiling_devil" alt="smiling_devil" usemap="#smiling_devil">
+		<map name="smiling_devil">
+			<area shape="rect" coords="0,0,56.1,60" alt="smiling_devil" href="like.php?member=jhope&reaction=smiling_devil">
+		</map>
+	
+		<img src="photos/emoji/purple_heart.png" class="purple_heart" alt="purple_heart" usemap="#purple_heart">
+		<map name="purple_heart">
+			<area shape="rect" coords="0,0,56.1,60" alt="purple_heart" href="like.php?member=jhope&reaction=purple_heart">
+		</map>
+	
+		<img src="photos/emoji/microphone.png" class="microphone" alt="microphone" usemap="#microphone">
+		<map name="microphone">
+			<area shape="rect" coords="0,0,56.1,60" alt="microphone" href="like.php?member=jhope&reaction=microphone">
+		</map>
+		
+		<img src="photos/emoji/loco.png" class="loco" alt="loco" usemap="#loco">
+		<map name="loco">
+			<area shape="rect" coords="0,0,56.1,60" alt="loco" href="like.php?member=jhope&reaction=loco">
+		</map></h4>
 	</div>
 	</div>
 	
 	<style>
+.r {
+	position: absolute;
+	display: block;
+	color: #958d94;
+	font-family: lucida sans;
+	font-size: 15px;
+	text-align: center;
+	margin-top: 70px;
+}	
+	
+.like {
+	display: block;
+	position: absolute;
+	margin-top: 260px;
+	margin-left: -20px;
+}
+
+.thumbs_up, .smiling_devil, .purple_heart, .microphone, .loco {
+	width: 56.1px;
+	height: 60px;
+}
+
 .comments {
 	position: absolute;
 	display: block;
