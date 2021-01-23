@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<reactions>
+	<member> <!--rm-->
+		<thumbs_up>20</thumbs_up>
+		<smiling_devil>15</smiling_devil>
+		<purple_heart>3</purple_heart>
+		<microphone>1</microphone>
+		<loco>7</loco>
+	</member>
+	
+	<member> <!--jin-->
+		<thumbs_up>16</thumbs_up>
+		<smiling_devil>1</smiling_devil>
+		<purple_heart>2</purple_heart>
+		<microphone>17</microphone>
+		<loco>9</loco>
+	</member>
+	
+	<member> <!--suga-->
+		<thumbs_up>19</thumbs_up>
+		<smiling_devil>0</smiling_devil>
+		<purple_heart>9</purple_heart>
+		<microphone>13</microphone>
+		<loco>6</loco>
+	</member>
+	
+	<member> <!--jhope-->
+		<thumbs_up>10</thumbs_up>
+		<smiling_devil>2</smiling_devil>
+		<purple_heart>16</purple_heart>
+		<microphone>7</microphone>
+		<loco>22</loco>
+	</member>
+
+	<member> <!--jimin-->
+		<thumbs_up>7</thumbs_up>
+		<smiling_devil>19</smiling_devil>
+		<purple_heart>4</purple_heart>
+		<microphone>23</microphone>
+		<loco>11</loco>
+	</member>
+
+	<member> <!--v-->
+		<thumbs_up>13</thumbs_up>
+		<smiling_devil>9</smiling_devil>
+		<purple_heart>20</purple_heart>
+		<microphone>3</microphone>
+		<loco>11</loco>
+	</member>
+
+	<member> <!--jungkook-->
+		<thumbs_up>5</thumbs_up>
+		<smiling_devil>22</smiling_devil>
+		<purple_heart>1</purple_heart>
+		<microphone>17</microphone>
+		<loco>2</loco>
+	</member>
+</reactions>
