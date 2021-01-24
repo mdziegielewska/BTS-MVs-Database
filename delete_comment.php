@@ -9,7 +9,11 @@
 	if (isset($member) && isset($date)) {
 		$sql = "DELETE FROM comments WHERE Member='$member' AND Date='$date'";
 		if (mysqli_query($conn, $sql)) {
+			if ($_COOKIE['username'] == 'admin') {
+				header("location: admin.php");
+			} else {
 			header("location: $member.php");
+			}
 		}
 	}
 ?>

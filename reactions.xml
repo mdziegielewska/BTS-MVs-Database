@@ -3,7 +3,7 @@
 	<member> <!--rm-->
 		<thumbs_up>20</thumbs_up>
 		<smiling_devil>15</smiling_devil>
-		<purple_heart>3</purple_heart>
+		<purple_heart>4</purple_heart>
 		<microphone>1</microphone>
 		<loco>7</loco>
 	</member>
@@ -11,7 +11,7 @@
 	<member> <!--jin-->
 		<thumbs_up>16</thumbs_up>
 		<smiling_devil>1</smiling_devil>
-		<purple_heart>2</purple_heart>
+		<purple_heart>3</purple_heart>
 		<microphone>17</microphone>
 		<loco>9</loco>
 	</member>
@@ -51,8 +51,8 @@
 	<member> <!--jungkook-->
 		<thumbs_up>5</thumbs_up>
 		<smiling_devil>22</smiling_devil>
-		<purple_heart>1</purple_heart>
-		<microphone>17</microphone>
+		<purple_heart>4</purple_heart>
+		<microphone>18</microphone>
 		<loco>2</loco>
 	</member>
 </reactions>

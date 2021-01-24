@@ -406,7 +406,7 @@ td {
 				
 				if ((isset($_COOKIE["username"])) && ($_COOKIE["username"] == $username)) {
 					$date = urlencode($date);
-					echo "<form action='delete_comment.php?member=jungkook&date=$date' method='post'>
+					echo "<form action='delete_comment.php?member=jhope&date=$date' method='post'>
 						<p><input type='submit' class='del' onclick=\"return confirm('Are you sure you want to delete?')\" value='Delete'/></p>
 						</form>";
 				}

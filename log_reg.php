@@ -122,8 +122,13 @@
 		$results = mysqli_num_rows($result);
 		
 		if (mysqli_num_rows($result) == 1) {
-			setcookie("username", $username, time()+3600*24,'/');
-			header('location: index.php');
+			if ($username == 'admin') {
+				setcookie("username", $username, time()+3600*24,'/');
+				header('location: admin.php');
+			} else {
+				setcookie("username", $username, time()+3600*24,'/');
+				header('location: index.php');
+			}
 		} else {
 			echo "Wrong username or password.";
 			echo "<p><a href='login.html' class='register' title='register'> Come back </a></p>";
