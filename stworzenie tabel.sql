@@ -12,13 +12,13 @@ create table users
 alter table users change Avatar Avatar varchar(100) character set utf8mb4 collate utf8mb4_general_ci not null default 'default.png';
 
 create table comments
-{
+(
     Id int(100) not null primary key auto_increment,
     Member varchar(20) not null,
     Username varchar(15) not null,
     Comment varchar(240) not null,
     Date datetime not null
-}
+);
 
 create table bts_members 
 (
