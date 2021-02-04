@@ -3,7 +3,7 @@
 	$conn = open_connection();
 	
 	$member = $_GET["member"];
-	$comment = $_POST["comment"];
+	$comment = $conn -> real_escape_string($_POST["comment"]);
 	$username = $_COOKIE["username"];
 	$datetime = date("Y-m-d H:i:s");
 	

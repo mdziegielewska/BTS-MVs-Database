@@ -12,10 +12,10 @@
 	$conn = open_connection();
 
 	$username = $_COOKIE["username"];
-	$new_display = $_POST["display_name"];
-	$new_username = $_POST["user"];
-	$new_password = $_POST["password"];
-	$new_password2 = $_POST["password2"];
+	$new_display = $conn -> real_escape_string($_POST["display_name"]);
+	$new_username = $conn -> real_escape_string($_POST["user"]);
+	$new_password = $conn -> real_escape_string($_POST["password"]);
+	$new_password2 = $conn -> real_escape_string($_POST["password2"]);
 	
 	if (!empty($new_display)) {
 		$sql = "UPDATE users SET Display_names = '$new_display' WHERE Usernames = '$username'";

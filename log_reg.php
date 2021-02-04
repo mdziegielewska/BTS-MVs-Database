@@ -78,10 +78,11 @@
 	
 	if(isset($_POST['register_user'])) {
 	$set = !empty($_POST['username'] && $_POST['password'] && $_POST['password2']);
+	$set = $conn -> real_escape_string($set);
 	if($set) {
-		$username = $_POST['username'];
-		$password = $_POST['password'];
-		$password2 = $_POST['password2'];
+		$username = $conn -> real_escape_string($_POST['username']);
+		$password = $conn -> real_escape_string($_POST['password']);
+		$password2 = $conn -> real_escape_string($_POST['password2']);
 		
 		$user_check = "SELECT * FROM users WHERE Usernames = '$username' LIMIT 1";
 		$result = mysqli_query($conn, $user_check);
@@ -113,8 +114,8 @@
 	}
 	
 	if (isset($_POST['login_user'])) {
-		$username = mysqli_real_escape_string($conn, $_POST['username']);
-		$password = mysqli_real_escape_string($conn, $_POST['password']);
+		$username = $conn -> real_escape_string($_POST['username']);
+		$password = $conn -> real_escape_string($_POST['password']);
 		$password = md5($password);
 		
 		$sql = "SELECT * FROM users WHERE Usernames='$username' AND Passwords='$password'";

@@ -154,6 +154,7 @@ td {
 
 <?php
 	$set = !empty($_POST['search']) ? $_POST['search'] : (!empty($_GET['search']) ? $_GET['search'] : null);
+	$set = $conn -> real_escape_string($set);
 	if ($set) {
 	$sql = "SELECT Song_name, Original_name, Released_date, Length, Released_language, Link_youtube, Producers, Composers, Lyricists FROM bts_mvs
 		WHERE (Song_name LIKE '%".$set."%')
