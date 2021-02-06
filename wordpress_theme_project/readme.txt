@@ -1,0 +1,1 @@
+Projekt motywu na Wordpressie na podstawie projektu nr 1 z przedmiotu Technologie Tworzenia Stron Internetowych.

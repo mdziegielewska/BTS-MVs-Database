@@ -1,0 +1,205 @@
+/*
+Theme Name: Laventae
+Text Domain: Laventae
+Version: 1.0
+Description: Fancy top menu bar theme
+Tags: fancy, lavender, top-menu-bar
+Author: Marta Dzięgielewska
+*/
+
+body {
+	background-color: #f2c9fb;
+	height: 650px;
+	width: 1350px;
+	overflow: scroll;
+}
+
+nav.header {
+	color: #918e91;
+	position: absolute;
+	display: block;
+	background-color: #fefce0;
+	font-family: lucida sans;
+	text-align: center;
+	margin-top: 10px;
+	width: 400px;
+	left: 484px;
+	height: 100px;
+	border-radius: 5px;
+	border-color: #fff1d7;
+	border-style: outset;
+}
+
+.mb-3.mx-auto.logo {
+	float: left; 
+	margin-top: 7px; 
+	transform: scale(0.5);
+}
+
+nav.custom-menu-class {
+	color: #918e91;
+	position: absolute;
+	background-color: #fefce0;
+	font-family: lucida sans;
+	text-align: center;
+	margin-top: 140px;
+	width: 820px;
+	height: 40px;
+	left: 287px;
+	border-radius: 5px;
+	border-color: #fff1d7;
+	border-style: outset;
+}
+
+nav.custom-menu-class ul {
+	list-style: none;
+	margin-top: 10px;
+	margin-left: -30px;
+}
+
+nav.custom-menu-class ul li {
+	display: inline-block;
+}
+
+nav.custom-menu-class ul li a {
+	display: block;
+	text-decoration: none;
+	font-family: lucida sans;
+	font-size: 16px;
+	color: #918e91;
+    margin: 0 30px;
+}
+
+nav.custom-menu-class ul li a {
+	position: relative;
+	z-index: 1;
+}
+
+nav.custom-menu-class ul li a:after {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	width: 100%;
+	height: 1px;
+	color: transparent;
+	content: '.';
+	background: #fff1d7;
+	visibility: none;
+	opacity: 0;
+	z-index: -1;
+}
+
+nav.custom-menu-class ul li a:hover:after {
+	opacity: 1;
+	visibility: visible;
+	height: 110%;
+	width: 100%;
+}
+
+.content {
+	position: absolute;
+	display: block;
+	margin-top: 160px;
+	margin-left: 85px;
+}
+
+.search {
+	display: block;
+	margin-top: -27.5px;
+	margin-left: 220px;
+	font-family: lucida sans;
+	font-size: 13.5px;
+	background-color: #c4c4b6;
+	border-radius: 5px;
+	border-color: #c4c4b6;
+	color: #fefce0;
+}
+
+.input {
+	font-family: lucida sans;
+	font-size: 15px;
+	caret-color: #ce53ed;
+	border-color: #fefce0;
+	border-radius: 15px;
+	border-style: solid;
+	display: block;
+	padding: 5px 5px 5px 10px;
+	margin-top: 80px;
+}
+
+figure.wp-block-image.size-large.is-resized.page_image {
+	margin-top: 70px;
+	margin-left: 210px;
+}
+
+figure.wp-block-table.page_table {
+	display: block;
+	margin-left: 550px;
+	margin-top: -530px;
+	height: 300px;
+	width: 440px;
+}
+
+article table {
+	border-radius: 5px;
+	border-color: #fefce0;
+	width: 1350px;
+	position: absolute;
+	font-family: lucida sans;
+	border-collapse: collapse;
+	display: block;
+	margin-top: 130px;
+	margin-left: 50px;
+	margin-bottom: 50px;
+}
+
+th {	
+	margin-top: 200px;
+	background-color: #ce53ed;
+	font-size: 15px;
+	text-transform: uppercase;
+	text-align: left;
+	padding: 7px 10px 10px 10px;
+	color: #fefce0;
+}
+
+td {
+	margin-top: 200px;
+	padding: 7px 10px 10px 10px;
+	background-color: white;
+	font-size: 13.5px;
+	text-align: left;
+	color: #958d94;
+}
+
+article div.has-avatars.has-dates.has-excerpts.no-comments.page_comments.wp-block-latest-comments {
+	display: block;
+	text-align: center;
+	font-family: lucida sans;
+	font-size: 19px;
+	margin-top: 150px;
+	margin-left: 380px;
+	color: #918e91;
+}
+
+p.results {
+	text-align: center;
+	font-family: lucida sans;
+	font-size: 19px;
+	margin-top: 90px;
+	margin-left: 110px;
+	color: #918e91;
+}
+
+.container {
+	display: block;
+	margin-top: 50px;
+}
+
+div.space {
+	height: 20px;
+}
