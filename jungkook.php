@@ -5,62 +5,7 @@
 <title>BTS members - Jungkook</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/members-main.css">
-</head>
-
-<body onload="page_init()">
-	<?php
-	include 'db_connection.php';
-	$conn = open_connection();
-	if (isset($_COOKIE["username"])) {
-		$username = htmlspecialchars($_COOKIE["username"]);
-		$sql = "SELECT Avatar FROM users WHERE Usernames='$username'";	
-		$result = mysqli_query($conn, $sql);
-		
-		echo "<p class='wb'> Welcome back <a href='change_profile.php' class='change'>" . htmlspecialchars($_COOKIE["username"]) .  "</a>!!!";
-		if ($result !== " ") {
-			while($row = $result->fetch_assoc()) {
-				$avatar = $row["Avatar"];
-				$folder = "photos/avatars/";
-				$image = $folder.$avatar;
-				echo "<img class='pp' src='$image'>";
-			}
-		}
-		echo "</br><a href='log_out.php' class='logout'>Log out</a></p>";
-	} else {
-		echo "<a href='login.html' class='login' title='Log in'>Login</a>";
-	}
-	?>
-	<div class = "header">
-	<h1 class = "h1"> <img src="photos/bts2.png" class="bts_logo" alt="bts_logo" usemap="#map1">Bangtan Boys
-	<img src="photos/army2.png" class="army_logo" alt="army_logo" usemap="#map2"> </h1> 
-	<h2 class = "h2"> 13.06.13 </h2> 
-	<map name="map1">
-		<area shape="rect" coords="11,17,57,91" alt="bts_logo" href="index.php">
-	</map>
-	<map name="map2">
-		<area shape="rect" coords="11,17,57,91" alt="army_logo" href="https://www.youtube.com/watch?v=2N-Fsa9Evo0">
-	</map>
-	</div>
-	
-	<nav class="menu">
-		<ul>
-			<li><a href="rm.php">   RM   </a></li>
-			<li><a href="jin.php">  Jin   </a></li>
-			<li><a href="suga.php">  Suga  </a></li>
-			<li><a href="jhope.php"> J-Hope </a></li>
-            <li><a href="jimin.php"> Jimin  </a></li>
-			<li><a href="v.php">   V    </a></li>
-            <li><a href="jungkook.php">Jungkook</a></li>
-		</ul>
-	</nav>
-	
-	<div class = "content">
-		<div class = "left">
-			<img src="photos/jungkook.jpg" alt="Jeongguk" class = "align-left"/>
-		</div>
-		<div class = "right">
-		
-<style>
+<style type="text/css">
 .pp {
 	display: block;
 	position: absolute;
@@ -145,14 +90,65 @@ td {
 	text-align: left;
 	background-color: #f2c9fb;
 </style>
+</head>
+
+<body onload="page_init()">
+	<?php
+	include 'db_connection.php';
+	$conn = open_connection();
+	if (isset($_COOKIE["username"])) {
+		$username = htmlspecialchars($_COOKIE["username"]);
+		$username = $conn -> real_escape_string($username);
+		$sql = "SELECT Avatar FROM users WHERE Usernames='" . $username . "'";	
+		$result = mysqli_query($conn, $sql);
+		
+		echo "<p class='wb'> Welcome back <a href='change_profile.php' class='change'>" . htmlspecialchars($_COOKIE["username"]) .  "</a>!!!";
+		if ($result !== " ") {
+			while($row = $result->fetch_assoc()) {
+				$avatar = $row["Avatar"];
+				$folder = "photos/avatars/";
+				$image = $folder.$avatar;
+				echo "<img class='pp' src='" . $image . "'>";
+			}
+		}
+		echo "</br><a href='log_out.php' class='logout'>Log out</a></p>";
+	} else {
+		echo "<a href='login.html' class='login' title='Log in'>Login</a>";
+	}
+	?>
+	<div class = "header">
+	<h1 class = "h1"> <img src="photos/bts2.png" class="bts_logo" alt="bts_logo" usemap="#map1">Bangtan Boys
+	<img src="photos/army2.png" class="army_logo" alt="army_logo" usemap="#map2"> </h1> 
+	<h2 class = "h2"> 13.06.13 </h2> 
+	<map name="map1">
+		<area shape="rect" coords="11,17,57,91" alt="bts_logo" href="index.php">
+	</map>
+	<map name="map2">
+		<area shape="rect" coords="11,17,57,91" alt="army_logo" href="https://www.youtube.com/watch?v=2N-Fsa9Evo0">
+	</map>
+	</div>
+	
+	<nav class="menu">
+		<ul>
+			<li><a href="rm.php">   RM   </a></li>
+			<li><a href="jin.php">  Jin   </a></li>
+			<li><a href="suga.php">  Suga  </a></li>
+			<li><a href="jhope.php"> J-Hope </a></li>
+            <li><a href="jimin.php"> Jimin  </a></li>
+			<li><a href="v.php">   V    </a></li>
+            <li><a href="jungkook.php">Jungkook</a></li>
+		</ul>
+	</nav>
+	
+	<div class = "content">
+		<div class = "left">
+			<img src="photos/jungkook.jpg" alt="Jeongguk" class = "align-left"/>
+		</div>
+		<div class = "right">
 
 	<?php
 	$sql = "SELECT Stage_name, Stage_name_in_Hangul, Korean_name, Korean_name_in_Hangul, Birthday, Hometown, Position FROM bts_members
 		WHERE Stage_name = 'Jungkook'";
-		
-	if(mysqli_errno($conn)) {
-		die("Błąd zapytania");
-	}
 	
 	$result = mysqli_query($conn, $sql);
 	$row_count = mysqli_num_rows($result);
@@ -210,8 +206,74 @@ td {
 		</map></h4>
 		</div> 
 	</div>
+	<div class="comments">
+		<h3 class="h3">Comments:</h3>
+	</div>
+	<div class="ur_comment">
+<?php
+	if (isset($_COOKIE["username"])) {
+		$username = htmlspecialchars($_COOKIE["username"]);
+		$username = $conn -> real_escape_string($username);
+		$sql = "SELECT Avatar FROM users WHERE Usernames='" . $username . "'";	
+		$result = mysqli_query($conn, $sql);
+		
+		if ($result !== " ") {
+			while($row = $result->fetch_assoc()) {
+				$avatar = $row["Avatar"];
+				$folder = "photos/avatars/";
+				$image = $folder.$avatar;
+				echo "<img class='com' src='" . $image . "'>";
+			}
+		}
+		
+		echo "<form action='add_comment.php?member=jungkook' method='post'>
+			<p><input class='c' name='comment' type='text' placeholder='Add a comment...' maxlength=240></p>
+			<p><input class='sub' type ='submit' value='Submit' name='add'></p>
+			</form>";
+	}	else {
+		echo "<form action='add_comment.php?member=jungkook' method='post'>
+			<p><input class='c' name='comment' type='text' placeholder='You need to log in to comment' maxlength=240 disabled></p>
+			</form>";
+	}
 	
-<style>
+?>
+	</div>
+	<div class="other">
+<?php
+	$sql2 = "SELECT Username, Comment, Date FROM comments WHERE Member='jungkook' ORDER BY comments.Date DESC";
+	$result2 = $conn->query($sql2);
+	
+	if ($result2->num_rows > 0) {
+		while($row2 = $result2-> fetch_assoc()) {
+			$username = $row2['Username'];
+			$sql3 = "SELECT Display_names, Avatar FROM users WHERE Usernames = '" . $username . "'";
+			$result3 = mysqli_query($conn, $sql3);
+			while($row3 = mysqli_fetch_array($result3)) {
+				$avatar = $row3["Avatar"];
+				$folder = "photos/avatars/";
+				$image = $folder.$avatar;
+				$display_name = $row3["Display_names"];
+				$com = $row2["Comment"];
+				$date = $row2["Date"];
+				
+				echo "<img class='av' src='" . $image . "'>";
+				echo "<p class='dn'>" . $display_name . "(@" . $username . ")</p>";
+				echo "<p class='cm'>" . $com . "</p>";
+				echo "<p class='d'>" . $date . "</p>";
+				
+				if ((isset($_COOKIE["username"])) && ($_COOKIE["username"] == $username)) {
+					$date = urlencode($date);
+					echo "<form action='delete_comment.php?member=jungkook&date=$date' method='post'>
+						<p><input type='submit' class='del' onclick=\"return confirm('Are you sure you want to delete?')\" value='Delete'/></p>
+						</form>";
+				}
+			}
+		}
+	}
+	close_connection($conn);
+?>
+	</div>
+<style type="text/css">
 .r {
 	position: absolute;
 	display: block;
@@ -350,71 +412,5 @@ td {
 	margin-left: 1000px;
 }
 </style>
-	<div class="comments">
-		<h3 class="h3">Comments:</h3>
-	</div>
-	<div class="ur_comment">
-<?php
-	if (isset($_COOKIE["username"])) {
-		$username = htmlspecialchars($_COOKIE["username"]);
-		$sql = "SELECT Avatar FROM users WHERE Usernames='$username'";	
-		$result = mysqli_query($conn, $sql);
-		
-		if ($result !== " ") {
-			while($row = $result->fetch_assoc()) {
-				$avatar = $row["Avatar"];
-				$folder = "photos/avatars/";
-				$image = $folder.$avatar;
-				echo "<img class='com' src='$image'>";
-			}
-		}
-		
-		echo "<form action='add_comment.php?member=jungkook' method='post'>
-			<p><input class='c' name='comment' type='text' placeholder='Add a comment...' maxlength=240></p>
-			<p><input class='sub' type ='submit' value='Submit' name='add'></p>
-			</form>";
-	}	else {
-		echo "<form action='add_comment.php?member=jungkook' method='post'>
-			<p><input class='c' name='comment' type='text' placeholder='You need to log in to comment' maxlength=240 disabled></p>
-			</form>";
-	}
-	
-?>
-	</div>
-	<div class="other">
-<?php
-	$sql2 = "SELECT Username, Comment, Date FROM comments WHERE Member='jungkook' ORDER BY comments.Date DESC";
-	$result2 = $conn->query($sql2);
-	
-	if ($result2->num_rows > 0) {
-		while($row2 = $result2-> fetch_assoc()) {
-			$username = $row2['Username'];
-			$sql3 = "SELECT Display_names, Avatar FROM users WHERE Usernames = '$username'";
-			$result3 = mysqli_query($conn, $sql3);
-			while($row3 = mysqli_fetch_array($result3)) {
-				$avatar = $row3["Avatar"];
-				$folder = "photos/avatars/";
-				$image = $folder.$avatar;
-				$display_name = $row3["Display_names"];
-				$com = $row2["Comment"];
-				$date = $row2["Date"];
-				
-				echo "<img class='av' src='$image'>";
-				echo "<p class='dn'>$display_name (@$username)</p>";
-				echo "<p class='cm'>$com</p>";
-				echo "<p class='d'>$date</p>";
-				
-				if ((isset($_COOKIE["username"])) && ($_COOKIE["username"] == $username)) {
-					$date = urlencode($date);
-					echo "<form action='delete_comment.php?member=jungkook&date=$date' method='post'>
-						<p><input type='submit' class='del' onclick=\"return confirm('Are you sure you want to delete?')\" value='Delete'/></p>
-						</form>";
-				}
-			}
-		}
-	}
-	close_connection($conn);
-?>
-	</div>
 </body>
 </html>

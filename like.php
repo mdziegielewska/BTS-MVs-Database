@@ -25,8 +25,7 @@
 		$xml -> member[$i] -> $reaction = $new;
 		
 		$xml->asXml('reactions.xml');
-		header("location: $member.php");
+		header("location: " . $member . ".php");
+		die();
 	}
-	
-	
 ?>

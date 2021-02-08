@@ -11,23 +11,24 @@
 	include 'db_connection.php';
 	$conn = open_connection();
 
-	$username = $_COOKIE["username"];
+	$username = htmlspecialchars($_COOKIE["username"]);
+	$username = $conn -> real_escape_string($username);
 	$new_display = $conn -> real_escape_string($_POST["display_name"]);
 	$new_username = $conn -> real_escape_string($_POST["user"]);
 	$new_password = $conn -> real_escape_string($_POST["password"]);
 	$new_password2 = $conn -> real_escape_string($_POST["password2"]);
 	
 	if (!empty($new_display)) {
-		$sql = "UPDATE users SET Display_names = '$new_display' WHERE Usernames = '$username'";
+		$sql = "UPDATE users SET Display_names = '" . $new_display . "' WHERE Usernames = '" . $username . "'";
 		mysqli_query($conn, $sql);
 	}
 	
 	if (!empty($new_username)) {
-		$sql2 = "UPDATE users SET Usernames = '$new_username' WHERE Usernames = '$username'";
+		$sql2 = "UPDATE users SET Usernames = '". $new_username . "' WHERE Usernames = '" . $username . "'";
 		if (mysqli_query($conn, $sql2)) {
 			setcookie("username", $username, time() - 360,'/');
 			setcookie("username", $new_username, time()+3600*24,'/');
-			$sql2_1 = "UPDATE comments SET Username = '$new_username' WHERE Username = '$username'";
+			$sql2_1 = "UPDATE comments SET Username = '" . $new_username . "' WHERE Username = '" . $username . "'";
 			mysqli_query($conn, $sql2_1);
 		}
 	}
@@ -37,7 +38,7 @@
 			die();
 		}
 		$new_password = md5($new_password);
-		$sql3 = "UPDATE users SET Passwords = '$new_password' WHERE Usernames = '$username'";
+		$sql3 = "UPDATE users SET Passwords = '" . $new_password . "' WHERE Usernames = '" . $username . "'";
 		mysqli_query($conn, $sql3);
 	}
 	if (!empty($_FILES["profile_pic"]["name"])) {
@@ -46,11 +47,12 @@
 		$folder = "photos/avatars/";
 		move_uploaded_file($new_avatar_temp, $folder.$new_avatar);
 		
-		$sql4 = "UPDATE users SET Avatar = '$new_avatar' WHERE Usernames = '$username'";
+		$sql4 = "UPDATE users SET Avatar = '" . $new_avatar . "' WHERE Usernames = '" . $username . "'";
 		mysqli_query($conn, $sql4);
 	}
 	
 	header('location: change_profile.php');
+	die();
 ?>
 
 </body>

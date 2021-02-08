@@ -5,60 +5,7 @@
 <title>Results</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-</head>
-
-<body onload="page_init()">
-	<?php
-	include 'db_connection.php';
-	$conn = open_connection();
-	if (isset($_COOKIE["username"])) {
-		$username = htmlspecialchars($_COOKIE["username"]);
-		$sql = "SELECT Avatar FROM users WHERE Usernames='$username'";	
-		$result = mysqli_query($conn, $sql);
-		
-		echo "<p class='wb'> Welcome back <a href='change_profile.php' class='change'>" . htmlspecialchars($_COOKIE["username"]) .  "</a>!!!";
-		if ($result !== " ") {
-			while($row = $result->fetch_assoc()) {
-				$avatar = $row["Avatar"];
-				$folder = "photos/avatars/";
-				$image = $folder.$avatar;
-				echo "<img class='pp' src='$image'>";
-			}
-		}
-		echo "</br><a href='log_out.php' class='logout'>Log out</a></p>";
-	} else {
-		echo "<a href='login.html' class='login' title='Log in'>Login</a>";
-	}
-	?>
-	<div class = "header">
-	<h1 class = "h1"> <img src="photos/bts2.png" class="bts_logo" alt="bts_logo" usemap="#map1">Bangtan Boys
-	<img src="photos/army2.png" class="army_logo" alt="army_logo" usemap="#map2"> </h1> 
-	<h2 class = "h2"> 13.06.13 </h2> 
-	<map name="map1">
-		<area shape="rect" coords="11,17,57,91" alt="bts_logo" href="index.php">
-	</map>
-	<map name="map2">
-		<area shape="rect" coords="11,17,57,91" alt="army_logo" href="https://www.youtube.com/watch?v=2N-Fsa9Evo0">
-	</map>
-	</div>
-	
-	<nav class="menu">
-		<ul>
-			<li><a href="rm.php">   RM   </a></li>
-			<li><a href="jin.php">  Jin   </a></li>
-			<li><a href="suga.php">  Suga  </a></li>
-			<li><a href="jhope.php"> J-Hope </a></li>
-            <li><a href="jimin.php"> Jimin  </a></li>
-			<li><a href="v.php">   V    </a></li>
-            <li><a href="jungkook.php">Jungkook</a></li>
-		</ul>
-	</nav>
-
-	<nav class="results">
-	<h3 class="h3"> Your results </h3>
-	<a href="index.php" class="cb" title="Come back">Click to return to the main site</a>
-	
-<style>
+<style type="text/css">
 .pp {
 	display: block;
 	position: absolute;
@@ -151,6 +98,59 @@ td {
 	color: #958d94;
 }
 </style>
+</head>
+
+<body onload="page_init()">
+	<?php
+	include 'db_connection.php';
+	$conn = open_connection();
+	if (isset($_COOKIE["username"])) {
+		$username = htmlspecialchars($_COOKIE["username"]);
+		$username = $conn -> real_escape_string($username);
+		$sql = "SELECT Avatar FROM users WHERE Usernames='" . $username . "'";	
+		$result = mysqli_query($conn, $sql);
+		
+		echo "<p class='wb'> Welcome back <a href='change_profile.php' class='change'>" . htmlspecialchars($_COOKIE["username"]) .  "</a>!!!";
+		if ($result !== " ") {
+			while($row = $result->fetch_assoc()) {
+				$avatar = $row["Avatar"];
+				$folder = "photos/avatars/";
+				$image = $folder.$avatar;
+				echo "<img class='pp' src='" . $image . "'>";
+			}
+		}
+		echo "</br><a href='log_out.php' class='logout'>Log out</a></p>";
+	} else {
+		echo "<a href='login.html' class='login' title='Log in'>Login</a>";
+	}
+	?>
+	<div class = "header">
+	<h1 class = "h1"> <img src="photos/bts2.png" class="bts_logo" alt="bts_logo" usemap="#map1">Bangtan Boys
+	<img src="photos/army2.png" class="army_logo" alt="army_logo" usemap="#map2"> </h1> 
+	<h2 class = "h2"> 13.06.13 </h2> 
+	<map name="map1">
+		<area shape="rect" coords="11,17,57,91" alt="bts_logo" href="index.php">
+	</map>
+	<map name="map2">
+		<area shape="rect" coords="11,17,57,91" alt="army_logo" href="https://www.youtube.com/watch?v=2N-Fsa9Evo0">
+	</map>
+	</div>
+	
+	<nav class="menu">
+		<ul>
+			<li><a href="rm.php">   RM   </a></li>
+			<li><a href="jin.php">  Jin   </a></li>
+			<li><a href="suga.php">  Suga  </a></li>
+			<li><a href="jhope.php"> J-Hope </a></li>
+            <li><a href="jimin.php"> Jimin  </a></li>
+			<li><a href="v.php">   V    </a></li>
+            <li><a href="jungkook.php">Jungkook</a></li>
+		</ul>
+	</nav>
+
+	<nav class="results">
+	<h3 class="h3"> Your results </h3>
+	<a href="index.php" class="cb" title="Come back">Click to return to the main site</a>
 
 <?php
 	$set = !empty($_POST['search']) ? $_POST['search'] : (!empty($_GET['search']) ? $_GET['search'] : null);
@@ -166,10 +166,6 @@ td {
 			OR (Producers LIKE '%".$set."%')
 			OR (Composers LIKE '%".$set."%')
 			OR (Lyricists LIKE '%".$set."%') ORDER BY bts_mvs.Released_date DESC";
-	
-	if(mysqli_errno($conn)) {
-		die("Błąd zapytania");
-	}
 	
 	$result = mysqli_query($conn, $sql);
 	$row_count = mysqli_num_rows($result);

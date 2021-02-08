@@ -7,14 +7,22 @@
 	<link rel="stylesheet" type="text/css" href="css/admin.css">
 </head>
 
+<?php
+	include 'db_connection.php';
+	$conn = open_connection();
+	$username = htmlspecialchars($_COOKIE["username"]);
+	if ($username !== 'admin') {
+		header('location: index.php');
+		die();
+	}
+?>
+
 <body onload="page_init()">
 <a href="log_out.php" class="logout">Log out</a>
 
 <nav class="users">
 <h1 class="h1"> Manage users </h1>
 <?php
-	include 'db_connection.php';
-	$conn = open_connection();
 	$sql = "SELECT * FROM users ORDER BY users.Id DESC";
 	$result = $conn->query($sql);
 	
@@ -31,7 +39,7 @@
 			$avatar = $row["Avatar"];
 			$folder = "photos/avatars/";
 			$image = $folder.$avatar;
-		echo "<tr><td> <img class='pp' src='$image'>
+		echo "<tr><td> <img class='pp' src='" . $image . "'>
 			</td><td>" . $row["Usernames"]. 
 			"</td><td>" . $row["Display_names"]. 
 			"</td><td>" . $row["Passwords"]. 
@@ -61,7 +69,7 @@
 			</tr>";
 		while($row2 = $result2-> fetch_assoc()) {
 			$username = $row2['Username'];
-			$sql3 = "SELECT Display_names, Avatar FROM users WHERE Usernames = '$username'";
+			$sql3 = "SELECT Display_names, Avatar FROM users WHERE Usernames = '" . $username . "'";
 			$result3 = mysqli_query($conn, $sql3);
 			
 			while($row3 = mysqli_fetch_array($result3)) {
@@ -70,8 +78,8 @@
 				$image = $folder.$avatar;
 				
 				echo "<tr><td>" . $row2["Member"] .
-					"</td><td> <img class='pp' src='$image'>
-					</td><td> $username
+					"</td><td> <img class='pp' src='" . $image . "'>
+					</td><td> " . $username . "
 					</td><td>" . $row3["Display_names"]. 
 					"</td><td>" . $row2["Comment"]. 
 					"</td><td>" . $row2["Date"] .

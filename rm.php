@@ -13,6 +13,7 @@
 	$conn = open_connection();
 	if (isset($_COOKIE["username"])) {
 		$username = htmlspecialchars($_COOKIE["username"]);
+		$username = $conn -> real_escape_string($username);
 		$sql = "SELECT Avatar FROM users WHERE Usernames='$username'";	
 		$result = mysqli_query($conn, $sql);
 		
@@ -148,10 +149,6 @@ td {
 <?php
 	$sql = "SELECT Stage_name, Stage_name_in_Hangul, Korean_name, Korean_name_in_Hangul, Birthday, Hometown, Position FROM bts_members
 		WHERE Stage_name = 'RM'";
-		
-	if(mysqli_errno($conn)) {
-		die("Błąd zapytania");
-	}
 	
 	$result = mysqli_query($conn, $sql);
 	$row_count = mysqli_num_rows($result);
@@ -356,7 +353,8 @@ td {
 <?php
 	if (isset($_COOKIE["username"])) {
 		$username = htmlspecialchars($_COOKIE["username"]);
-		$sql = "SELECT Avatar FROM users WHERE Usernames='$username'";	
+		$username = $conn -> real_escape_string($username);
+		$sql = "SELECT Avatar FROM users WHERE Usernames='" . $username . "'";	
 		$result = mysqli_query($conn, $sql);
 		
 		if ($result !== " ") {
@@ -364,7 +362,7 @@ td {
 				$avatar = $row["Avatar"];
 				$folder = "photos/avatars/";
 				$image = $folder.$avatar;
-				echo "<img class='com' src='$image'>";
+				echo "<img class='com' src='" . $image . "'>";
 			}
 		}
 		
@@ -388,7 +386,7 @@ td {
 	if ($result2->num_rows > 0) {
 		while($row2 = $result2-> fetch_assoc()) {
 			$username = $row2['Username'];
-			$sql3 = "SELECT Display_names, Avatar FROM users WHERE Usernames = '$username'";
+			$sql3 = "SELECT Display_names, Avatar FROM users WHERE Usernames = '" . $username . "'";
 			$result3 = mysqli_query($conn, $sql3);
 			while($row3 = mysqli_fetch_array($result3)) {
 				$avatar = $row3["Avatar"];
@@ -398,10 +396,10 @@ td {
 				$com = $row2["Comment"];
 				$date = $row2["Date"];
 				
-				echo "<img class='av' src='$image'>";
-				echo "<p class='dn'>$display_name (@$username)</p>";
-				echo "<p class='cm'>$com</p>";
-				echo "<p class='d'>$date</p>";
+				echo "<img class='av' src='" . $image . "'>";
+				echo "<p class='dn'>" . $display_name . "(@" . $username . ")</p>";
+				echo "<p class='cm'>" . $com . "</p>";
+				echo "<p class='d'>" . $date . "</p>";
 				
 				if ((isset($_COOKIE["username"])) && ($_COOKIE["username"] == $username)) {
 					$date = urlencode($date);

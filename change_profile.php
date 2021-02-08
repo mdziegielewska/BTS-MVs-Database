@@ -5,9 +5,7 @@
 <title>Change your profile</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-</head>
-
-<style>
+<style type="text/css">
 .wb {
 	font-family: lucida sans;
 	font-size: 16px;
@@ -138,8 +136,8 @@
 	margin-left: 230px;
 	margin-top: -20px;
 }
-
 </style>
+</head>
 
 <body onload="page_init()">
 	<?php
@@ -147,21 +145,22 @@
 	$conn = open_connection();
 	if (isset($_COOKIE["username"])) {
 		$username = htmlspecialchars($_COOKIE["username"]);
-		$sql = "SELECT Avatar FROM users WHERE Usernames='$username'";	
+		$username = $conn -> real_escape_string($username);
+		$sql = "SELECT Avatar FROM users WHERE Usernames='" . $username . "'";	
 		$result = mysqli_query($conn, $sql);
-		
 		echo "<p class='wb'> Welcome back <a href='change_profile.php' class='change'>" . htmlspecialchars($_COOKIE["username"]) .  "</a>!!!";
 		if ($result !== " ") {
 			while($row = $result->fetch_assoc()) {
 				$avatar = $row["Avatar"];
 				$folder = "photos/avatars/";
 				$image = $folder.$avatar;
-				echo "<img class='pp' src='$image'>";
+				echo "<img class='pp' src='" . $image . "'>";
 			}
 		}
 		echo "</br><a href='log_out.php' class='logout'>Log out</a></p>";
 	} else {
-		echo "<a href='login.html' class='login' title='Log in'>Login</a>";
+		header('location: index.php');
+		die();
 	}
 	?>
 	<div class = "header">
@@ -191,7 +190,7 @@
 	<nav class="change">
 	<h3 class="h3"> Edit profile: </h3>
 	<?php
-		$sql2 = "SELECT Avatar FROM users WHERE Usernames='$username'";
+		$sql2 = "SELECT Avatar FROM users WHERE Usernames='" . $username . "'";
 		$result2 = mysqli_query($conn, $sql2);
 		
 		if (!empty($result2)) {
@@ -199,7 +198,7 @@
 				$avatar = $row["Avatar"];
 				$folder = "photos/avatars/";
 				$image = $folder.$avatar;
-				echo "<img class='avatar' src='$image'>";
+				echo "<img class='avatar' src='" . $image . "'>";
 			}
 		}
 	?>

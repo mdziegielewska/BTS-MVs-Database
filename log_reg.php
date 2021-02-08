@@ -5,6 +5,36 @@
 <title></title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/signup-main.css">
+<style type="text/css">
+.middle2 {
+	margin-top: 350px;
+	margin-left: 550px;
+	display: block;
+	position: absolute;
+	font-family: lucida sans;
+	color: #958d94;
+	font-size: 18px;
+}
+
+.login {
+	display: block;
+	position: absolute;
+	color: #918e91;
+	font-size: 17px;
+	margin-left: 90px;
+	margin-top: 20px;
+}
+
+.register {
+	display: block;
+	position: absolute;
+	color: #918e91;
+	font-size: 17px;
+	margin-left: 80px;
+	margin-top: 10px;
+}
+
+</style>
 </head>
 
 <body onload="page_init()">
@@ -40,37 +70,6 @@
 			<img src="photos/bw3.png" class="bw">
 		</div>
 		<div class="middle2">
-
-<style>
-.middle2 {
-	margin-top: 350px;
-	margin-left: 550px;
-	display: block;
-	position: absolute;
-	font-family: lucida sans;
-	color: #958d94;
-	font-size: 18px;
-}
-
-.login {
-	display: block;
-	position: absolute;
-	color: #918e91;
-	font-size: 17px;
-	margin-left: 90px;
-	margin-top: 20px;
-}
-
-.register {
-	display: block;
-	position: absolute;
-	color: #918e91;
-	font-size: 17px;
-	margin-left: 80px;
-	margin-top: 10px;
-}
-
-</style>
 		
 <?php
 	include 'db_connection.php';
@@ -84,7 +83,7 @@
 		$password = $conn -> real_escape_string($_POST['password']);
 		$password2 = $conn -> real_escape_string($_POST['password2']);
 		
-		$user_check = "SELECT * FROM users WHERE Usernames = '$username' LIMIT 1";
+		$user_check = "SELECT * FROM users WHERE Usernames = '" . $username . "' LIMIT 1";
 		$result = mysqli_query($conn, $user_check);
 		$user = mysqli_fetch_assoc($result);
 		
@@ -103,7 +102,7 @@
 		}
 		
 		$password = md5($password);
-		$sql = "INSERT INTO users (Usernames, Passwords) VALUES ('$username', '$password')";
+		$sql = "INSERT INTO users (Usernames, Passwords) VALUES ('" . $username . "', '" . $password . "')";
 	
 		if(mysqli_query($conn, $sql)) {
 			echo "<p>Thank you for signing up.</br>
@@ -118,7 +117,7 @@
 		$password = $conn -> real_escape_string($_POST['password']);
 		$password = md5($password);
 		
-		$sql = "SELECT * FROM users WHERE Usernames='$username' AND Passwords='$password'";
+		$sql = "SELECT * FROM users WHERE Usernames='" . $username . "' AND Passwords='" . $password . "'";
 		$result = mysqli_query($conn, $sql);
 		$results = mysqli_num_rows($result);
 		
@@ -126,9 +125,11 @@
 			if ($username == 'admin') {
 				setcookie("username", $username, time()+3600*24,'/');
 				header('location: admin.php');
+				die();
 			} else {
 				setcookie("username", $username, time()+3600*24,'/');
 				header('location: index.php');
+				die();
 			}
 		} else {
 			echo "Wrong username or password.";
