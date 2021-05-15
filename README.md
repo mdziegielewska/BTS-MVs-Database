@@ -1,1 +1,2 @@
-Projekt jest stroną internetową wykorzystującą HTML, JavaScript oraz PHP, a także korzystająca z bazy danych MySQL.
+Projekt jest stroną internetową wykorzystującą HTML, JavaScript i PHP, a także korzystającą z bazy danych MySQL. Przedstawia informacje na temat członków zespołu BTS, bazę ich teledysków, jak również pozwala w niej wyszukiwać. Umożliwia rejestrację, a po zalogowaniu - zostawianie reakcji pod profilami oraz komentowanie ich.
+Projekt na potrzeby zaliczenia przedmiotów Programowanie Baz Danych oraz Technologie Tworzenia Stron Internetowych.
