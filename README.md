@@ -15,6 +15,7 @@ This project was created for the purpose of completing courses - Databases Progr
 
 ### Technologies Used
 Frontend: HTML, CSS
+
 Backend: PHP, MySQL
 
 
