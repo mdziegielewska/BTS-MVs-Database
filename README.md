@@ -3,7 +3,6 @@
 ### Project Overview
 
 A web application showcasing information about BTS members and their music videos. Built with PHP, MySQL, HTML, and CSS, this project allows users to explore member profiles, view music video details, and leave comments after logging in. Developed as a final project for Databases Programming and Web Development Technologies courses.
-This project was created for the purpose of completing courses - Databases Programming and Web Development Technologies.
 
 
 ### Key Features
