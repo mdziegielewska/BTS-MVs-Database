@@ -1,8 +1,26 @@
-<b>PL</b><br>
-Projekt jest stroną internetową wykorzystującą JavaScript i PHP, a także korzystającą z bazy danych MySQL. Przedstawia informacje na temat członków zespołu BTS, bazę ich teledysków, jak również pozwala w niej wyszukiwać. Umożliwia rejestrację, a po zalogowaniu - zostawianie reakcji pod profilami oraz komentowanie ich.
-Projekt na potrzeby zaliczenia przedmiotów Programowanie Baz Danych oraz Technologie Tworzenia Stron Internetowych.
+## BTS MVs Database
 
+### Project Overview
 
-<b>ENG</b><br>
-The project is a website implemented using JavaScript, PHP and MySQL database. It shows informations about the BTS members, as well as displays data about their music videos. After logging in, users are able to leave comments and reactions under each profile.
+A web application showcasing information about BTS members and their music videos. Built with PHP, MySQL, HTML, and CSS, this project allows users to explore member profiles, view music video details, and leave comments after logging in. Developed as a final project for Databases Programming and Web Development Technologies courses.
 This project was created for the purpose of completing courses - Databases Programming and Web Development Technologies.
+
+
+### Key Features
+- Detailed profiles of BTS members
+- Extensive music video information and data
+- User login and authentication
+- Commenting system for user interaction
+
+
+### Technologies Used
+Frontend: HTML, CSS
+Backend: PHP, MySQL
+
+
+### Getting Started
+
+1. Clone the repository: git clone https://github.com/mdziegielewska/BTS-MVs-Database.git
+2. Set up a database and import the provided SQL file
+3. Configure database credentials in the PHP files
+4. Start a local web server (e.g., using XAMPP, Apache)
